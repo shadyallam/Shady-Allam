@@ -1,0 +1,616 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080b12">
+<title>Shady Allam | Healthy Life</title>
+<meta name="description" content="Personalized fitness coaching by Shady Allam. Training, nutrition and accountability.">
+
+<style>
+:root {
+  --bg:#080b12;
+  --surface:#111725;
+  --surface2:#172238;
+  --blue:#2878ff;
+  --blue2:#1455cb;
+  --white:#ffffff;
+  --muted:#a5afc1;
+  --border:#27344a;
+}
+* {box-sizing:border-box;margin:0;padding:0}
+html {scroll-behavior:smooth}
+body {
+  background:var(--bg);
+  color:var(--white);
+  font-family:Arial,Helvetica,sans-serif;
+  line-height:1.65;
+}
+a {color:inherit;text-decoration:none}
+button,input,select,textarea {font:inherit}
+.container {width:min(1100px,90%);margin:auto}
+header {
+  position:sticky;top:0;z-index:10;
+  background:rgba(8,11,18,.94);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(15px);
+}
+nav {
+  min-height:72px;display:flex;
+  align-items:center;justify-content:space-between;
+  gap:15px;
+}
+.logo {font-size:16px;font-weight:900;letter-spacing:1px}
+.logo span {color:var(--blue)}
+.navlinks {display:flex;gap:22px;font-size:13px;color:var(--muted)}
+.navlinks a:hover {color:var(--blue)}
+.btn {
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:13px 21px;border-radius:7px;
+  background:var(--blue);color:white;
+  border:1px solid var(--blue);font-weight:800;
+  cursor:pointer;transition:.2s;
+}
+.btn:hover {background:var(--blue2);transform:translateY(-2px)}
+.btn-outline {background:transparent;border-color:var(--border)}
+section {padding:85px 0}
+.eyebrow {
+  color:#69a2ff;font-size:12px;
+  font-weight:800;letter-spacing:2px;
+  text-transform:uppercase;margin-bottom:15px;
+}
+h1 {font-size:clamp(42px,8vw,76px);line-height:1.03;letter-spacing:-2px}
+h2 {font-size:clamp(30px,5vw,44px);line-height:1.12;margin-bottom:16px}
+h3 {font-size:21px}
+p {color:var(--muted)}
+.hero {padding:90px 0 75px}
+.hero-content {max-width:780px}
+.hero h1 span {color:var(--blue)}
+.hero p {font-size:18px;max-width:620px;margin:24px 0}
+.actions {display:flex;gap:12px;flex-wrap:wrap;margin-top:27px}
+.video-section {padding-top:25px}
+.video-box {
+  background:linear-gradient(135deg,#101b30,#0b111e);
+  border:1px solid var(--border);
+  border-radius:14px;overflow:hidden;
+}
+.video-placeholder {
+  aspect-ratio:16/9;display:flex;
+  flex-direction:column;align-items:center;
+  justify-content:center;text-align:center;padding:20px;
+}
+.play {
+  width:70px;height:70px;border-radius:50%;
+  background:var(--blue);display:grid;
+  place-items:center;font-size:28px;margin-bottom:15px;
+}
+.video-placeholder strong {font-size:20px}
+.video-placeholder small {color:var(--muted);margin-top:7px}
+.video-caption {padding:18px 22px;border-top:1px solid var(--border)}
+.section-head {max-width:650px;margin-bottom:35px}
+.section-head p {margin-top:12px}
+.features {
+  display:grid;grid-template-columns:repeat(3,1fr);gap:15px;
+}
+.feature,.package,.form-card,.payment-card {
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:12px;padding:25px;
+}
+.feature .number {color:var(--blue);font-weight:900;font-size:13px}
+.feature h3 {margin:12px 0 8px}
+.packages {
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:17px;align-items:stretch;
+}
+.package {position:relative;display:flex;flex-direction:column}
+.package.popular {
+  border:2px solid var(--blue);
+  background:linear-gradient(180deg,#142544,#111725);
+}
+.tag {
+  color:#80b1ff;font-size:11px;font-weight:900;
+  letter-spacing:1px;margin-bottom:12px;
+}
+.price {font-size:37px;font-weight:900;margin:14px 0 2px}
+.duration {font-size:12px;color:var(--muted)}
+.package p {margin:15px 0}
+.package ul {list-style:none;margin:10px 0 24px;flex:1}
+.package li {font-size:14px;color:#d6dce7;padding:7px 0}
+.package li:before {content:"✓";color:#5796ff;margin-right:9px;font-weight:bold}
+.package .btn {width:100%;margin-top:auto}
+.how-grid {display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.step {border-top:2px solid var(--blue);padding-top:17px}
+.step strong {color:#6ea5ff;font-size:13px}
+.step h3 {margin:10px 0}
+.form-layout {display:grid;grid-template-columns:1fr .8fr;gap:20px;align-items:start}
+.form-card h3,.payment-card h3 {margin-bottom:18px}
+label {display:block;font-size:13px;font-weight:700;margin:15px 0 7px}
+input,select,textarea {
+  width:100%;background:#0b111c;color:white;
+  border:1px solid var(--border);
+  border-radius:7px;padding:13px;
+  outline:none;
+}
+input:focus,select:focus,textarea:focus {border-color:var(--blue)}
+textarea {min-height:90px;resize:vertical}
+select option {background:#111725}
+.payment-card {position:sticky;top:95px}
+.pay-number {
+  font-size:26px;font-weight:900;
+  color:#75aaff;margin:10px 0;
+}
+.amount {font-size:27px;font-weight:900;margin:10px 0}
+.note {font-size:12px;color:var(--muted);margin-top:12px}
+.copy-btn {
+  background:var(--surface2);border:1px solid var(--border);
+  padding:9px 13px;border-radius:6px;color:white;cursor:pointer;
+}
+.faq {max-width:750px}
+.faq details {padding:18px 0;border-bottom:1px solid var(--border)}
+.faq summary {cursor:pointer;font-weight:700}
+.faq details p {margin-top:10px}
+footer {border-top:1px solid var(--border);padding:35px 0;text-align:center}
+footer p {font-size:13px;margin-top:8px}
+.success {
+  display:none;background:#102d25;
+  color:#a8f0ce;border:1px solid #25684d;
+  padding:17px;border-radius:8px;margin-top:18px;
+  overflow-wrap:anywhere;
+}
+@media(max-width:800px) {
+  .packages,.features {grid-template-columns:1fr}
+  .how-grid {grid-template-columns:repeat(2,1fr)}
+  .form-layout {grid-template-columns:1fr}
+  .payment-card {position:static}
+}
+@media(max-width:520px) {
+  .navlinks {gap:10px;font-size:11px}
+  .logo {font-size:13px}
+  nav .btn {padding:9px 12px;font-size:12px}
+  section {padding:65px 0}
+  .hero {padding:65px 0 45px}
+  .how-grid {grid-template-columns:1fr 1fr}
+  .feature,.package,.form-card,.payment-card {padding:20px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <a class="logo" href="#">SHADY ALLAM <span>· HL</span></a>
+      <div class="navlinks">
+        <a href="#intro">Intro</a>
+        <a href="#packages">Packages</a>
+        <a href="#apply">Apply</a>
+      </div>
+      <a href="#packages" class="btn">GET STARTED ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- INTRODUCTION -->
+<section class="hero" id="intro">
+  <div class="container hero-content">
+    <div class="eyebrow">ONLINE FITNESS COACHING · SHADY ALLAM</div>
+    <h1>BUILD YOUR<br><span>BEST VERSION.</span></h1>
+    <p>
+      Personalized training, practical nutrition and
+      consistent follow-up. A structured coaching
+      experience built around your goals and lifestyle.
+    </p>
+    <div class="actions">
+      <a href="#coach-video" class="btn">MEET YOUR COACH ↓</a>
+      <a href="#packages" class="btn btn-outline">EXPLORE PACKAGES ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO PLACEHOLDER -->
+<section class="video-section" id="coach-video">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">01 / YOUR COACH</div>
+      <h2>LET'S GET TO KNOW EACH OTHER.</h2>
+      <p>Watch my introduction and learn how we'll work together to achieve your goals.</p>
+    </div>
+    <div class="video-box">
+      <div class="video-placeholder">
+        <div class="play">▶</div>
+        <strong>INTRODUCTION VIDEO</strong>
+        <small>SHADY ALLAM · VIDEO COMING SOON</small>
+      </div>
+      <div class="video-caption">
+        <p>Your coaching journey starts with understanding your goals, your lifestyle and your starting point.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COACHING EXPERIENCE -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">THE COACHING EXPERIENCE</div>
+      <h2>MORE THAN A WORKOUT PLAN.</h2>
+      <p>Three essential elements designed to help you build sustainable results.</p>
+    </div>
+    <div class="features">
+      <div class="feature">
+        <div class="number">01 / TRAINING</div>
+        <h3>Personalized workouts</h3>
+        <p>Training designed around your goals, experience, schedule and equipment.</p>
+      </div>
+      <div class="feature">
+        <div class="number">02 / NUTRITION</div>
+        <h3>Smart nutrition</h3>
+        <p>Practical nutrition guidance that works with your daily routine and preferences.</p>
+      </div>
+      <div class="feature">
+        <div class="number">03 / ACCOUNTABILITY</div>
+        <h3>Consistent follow-up</h3>
+        <p>Progress reviews and coaching support throughout your three-month journey.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section id="packages">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">02 / CHOOSE YOUR PACKAGE</div>
+      <h2>YOUR PLAN. YOUR PACE.</h2>
+      <p>Three months. Three coaching levels. Choose the experience that matches your goals.</p>
+    </div>
+
+    <div class="packages">
+
+      <div class="package">
+        <div class="tag">01 / YOUR FOUNDATION</div>
+        <h3>BASIC</h3>
+        <div class="price">EGP 3,000</div>
+        <div class="duration">3 MONTHS · TOTAL PRICE</div>
+        <p>A structured foundation to get started.</p>
+        <ul>
+          <li>Personalized workout plan</li>
+          <li>Personalized nutrition plan</li>
+          <li>Initial fitness assessment</li>
+          <li>Weekly progress check-in</li>
+          <li>Progress tracking</li>
+        </ul>
+        <button class="btn" onclick="choosePackage('BASIC')">SELECT BASIC ↗</button>
+      </div>
+
+      <div class="package popular">
+        <div class="tag">02 / MOST POPULAR · BEST VALUE</div>
+        <h3>ADVANCED</h3>
+        <div class="price">EGP 5,000</div>
+        <div class="duration">3 MONTHS · TOTAL PRICE</div>
+        <p>More personal support and flexibility throughout your journey.</p>
+        <ul>
+          <li>Everything in Basic</li>
+          <li>Complete food alternatives E-book</li>
+          <li>Direct contact with Shady Allam</li>
+          <li>Weekly one-on-one coaching call</li>
+          <li>Weekly progress review</li>
+          <li>Training and nutrition adjustments</li>
+          <li>Supplement guidance</li>
+        </ul>
+        <button class="btn" onclick="choosePackage('ADVANCED')">SELECT ADVANCED ↗</button>
+      </div>
+
+      <div class="package">
+        <div class="tag">03 / VIP EXPERIENCE</div>
+        <h3>ELITE</h3>
+        <div class="price">EGP 7,000</div>
+        <div class="duration">3 MONTHS · TOTAL PRICE</div>
+        <p>Our highest level of personal attention and support.</p>
+        <ul>
+          <li>Everything in Advanced</li>
+          <li>Unlimited diet adjustments</li>
+          <li>Priority WhatsApp support</li>
+          <li>Personalized weekly strategy review</li>
+          <li>Exercise video reviews</li>
+          <li>Personalized meal recommendations</li>
+          <li>Monthly progress analysis</li>
+        </ul>
+        <button class="btn" onclick="choosePackage('ELITE')">SELECT ELITE ↗</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">SIMPLE FROM DAY ONE</div>
+      <h2>HOW IT WORKS.</h2>
+      <p>Your coaching journey in four simple steps.</p>
+    </div>
+    <div class="how-grid">
+      <div class="step">
+        <strong>STEP 01</strong>
+        <h3>Choose your plan</h3>
+        <p>Select your coaching package.</p>
+      </div>
+      <div class="step">
+        <strong>STEP 02</strong>
+        <h3>Apply</h3>
+        <p>Tell me about your goals and starting point.</p>
+      </div>
+      <div class="step">
+        <strong>STEP 03</strong>
+        <h3>Pay via InstaPay</h3>
+        <p>Transfer your package amount.</p>
+      </div>
+      <div class="step">
+        <strong>STEP 04</strong>
+        <h3>Get started</h3>
+        <p>Payment verification and onboarding.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPLICATION & PAYMENT -->
+<section id="apply">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">03 / YOUR COACHING APPLICATION</div>
+      <h2>LET'S BUILD YOUR PLAN.</h2>
+      <p>Complete your details, select your package and follow the InstaPay payment instructions.</p>
+    </div>
+
+    <div class="form-layout">
+
+      <div class="form-card">
+        <h3>YOUR INFORMATION</h3>
+
+        <form id="applicationForm">
+
+          <label for="package">SELECTED PACKAGE *</label>
+          <select id="package" required onchange="updatePrice()">
+            <option value="">Choose your package</option>
+            <option value="BASIC">Basic — EGP 3,000</option>
+            <option value="ADVANCED">Advanced — EGP 5,000</option>
+            <option value="ELITE">Elite — EGP 7,000</option>
+          </select>
+
+          <label for="name">FULL NAME *</label>
+          <input id="name" required placeholder="Your full name">
+
+          <label for="phone">PHONE / WHATSAPP *</label>
+          <input id="phone" type="tel" required placeholder="Your phone number">
+
+          <label for="email">EMAIL</label>
+          <input id="email" type="email" placeholder="Your email address">
+
+          <label for="age">AGE *</label>
+          <input id="age" type="number" min="16" max="100" required placeholder="Your age">
+
+          <label for="goal">MAIN FITNESS GOAL *</label>
+          <select id="goal" required>
+            <option value="">Choose your goal</option>
+            <option>Build muscle / Bulking</option>
+            <option>Fat loss</option>
+            <option>Body recomposition</option>
+            <option>General fitness</option>
+          </select>
+
+          <label for="height">HEIGHT (CM) *</label>
+          <input id="height" type="number" required placeholder="Height in cm">
+
+          <label for="weight">CURRENT WEIGHT (KG) *</label>
+          <input id="weight" type="number" step="0.1" required placeholder="Weight in kg">
+
+          <label for="experience">TRAINING EXPERIENCE *</label>
+          <select id="experience" required>
+            <option value="">Choose experience</option>
+            <option>Beginner</option>
+            <option>Less than 1 year</option>
+            <option>1–3 years</option>
+            <option>More than 3 years</option>
+          </select>
+
+          <label for="challenge">BIGGEST FITNESS CHALLENGE</label>
+          <textarea id="challenge" placeholder="Tell me about your biggest challenge..."></textarea>
+
+          <label for="medical">INJURIES OR IMPORTANT NUTRITIONAL CONSIDERATIONS</label>
+          <textarea id="medical" placeholder="Share only relevant information."></textarea>
+
+          <label for="reference">PAYMENT TRANSACTION REFERENCE / ID *</label>
+          <input id="reference" required placeholder="Enter your transaction reference">
+
+          <label for="proof">PAYMENT SCREENSHOT (OPTIONAL)</label>
+          <input id="proof" type="file" accept="image/*,.pdf">
+
+          <p class="note">The demo form does not upload payment screenshots or transmit applications to the coach. A secure backend connection is required for live submissions.</p>
+
+          <button type="submit" class="btn" style="width:100%;margin-top:22px">
+            PREPARE MY APPLICATION ↗
+          </button>
+
+          <div class="success" id="success">
+            Your application summary is ready. Copy it and send it to Shady for review.
+            <button type="button" class="copy-btn" onclick="copyApplication()" style="display:block;margin-top:12px">
+              COPY APPLICATION
+            </button>
+            <pre id="summary" style="white-space:pre-wrap;margin-top:15px;font:13px Arial;color:#fff"></pre>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- PAYMENT -->
+      <div class="payment-card">
+        <div class="eyebrow">PAYMENT DETAILS</div>
+        <h3>PAY VIA INSTAPAY.</h3>
+        <p>Transfer the exact amount for your selected package using the number below.</p>
+
+        <div style="margin-top:25px">
+          <div class="duration">INSTA PAY NUMBER</div>
+          <div class="pay-number" id="payNumber">01003223027</div>
+          <button class="copy-btn" onclick="copyNumber()">COPY NUMBER</button>
+        </div>
+
+        <hr style="border:0;border-top:1px solid var(--border);margin:25px 0">
+
+        <div class="duration">AMOUNT TO TRANSFER</div>
+        <div class="amount" id="amount">Select a package</div>
+
+        <div style="background:var(--surface2);padding:16px;border-radius:8px;margin-top:20px">
+          <strong>IMPORTANT</strong>
+          <p class="note">
+            1. Transfer the exact package amount.<br>
+            2. Keep your transaction reference.<br>
+            3. Submit your application.<br>
+            4. Wait for manual payment verification.
+          </p>
+        </div>
+
+        <p class="note">
+          Your coaching starts after payment verification and onboarding confirmation.
+          Always verify the recipient's details in InstaPay before transferring.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="container faq">
+    <div class="eyebrow">GOOD TO KNOW</div>
+    <h2>FREQUENT QUESTIONS.</h2>
+
+    <details>
+      <summary>How long does each package last?</summary>
+      <p>All coaching packages last three months.</p>
+    </details>
+
+    <details>
+      <summary>Are the plans personalized?</summary>
+      <p>Yes. Your training and nutrition guidance are planned around your goals and circumstances.</p>
+    </details>
+
+    <details>
+      <summary>How often is follow-up provided?</summary>
+      <p>Weekly progress check-ins are part of the coaching structure. Weekly coaching calls are included in Advanced and Elite.</p>
+    </details>
+
+    <details>
+      <summary>How do I pay?</summary>
+      <p>Payment is made through InstaPay using the number displayed in the application section.</p>
+    </details>
+
+    <details>
+      <summary>When does coaching start?</summary>
+      <p>After payment has been manually verified and your onboarding details have been reviewed.</p>
+    </details>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="logo">SHADY ALLAM <span>· HEALTHY LIFE</span></div>
+    <p>Train with purpose. Eat with intention. Stay consistent.</p>
+    <p>© 2026 Shady Allam. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+const prices = {
+  BASIC:3000,
+  ADVANCED:5000,
+  ELITE:7000
+};
+
+let applicationText = "";
+
+function choosePackage(name) {
+  document.getElementById("package").value = name;
+  updatePrice();
+  document.getElementById("apply").scrollIntoView({behavior:"smooth"});
+}
+
+function updatePrice() {
+  const selected = document.getElementById("package").value;
+  document.getElementById("amount").textContent =
+    selected ? "EGP " + prices[selected].toLocaleString("en-US") : "Select a package";
+}
+
+function copyNumber() {
+  navigator.clipboard.writeText("01003223027")
+    .then(() => alert("InstaPay number copied!"))
+    .catch(() => alert("Please copy manually: 01003223027"));
+}
+
+document.getElementById("applicationForm").addEventListener("submit",function(e) {
+  e.preventDefault();
+
+  const selected = document.getElementById("package").value;
+
+  if (!selected) {
+    alert("Please select a coaching package.");
+    return;
+  }
+
+  const file = document.getElementById("proof").files[0];
+
+  applicationText =
+`SHADY ALLAM - HEALTHY LIFE
+NEW COACHING APPLICATION
+
+PACKAGE: ${selected}
+DURATION: 3 MONTHS
+AMOUNT: EGP ${prices[selected]}
+
+FULL NAME: ${document.getElementById("name").value}
+PHONE: ${document.getElementById("phone").value}
+EMAIL: ${document.getElementById("email").value}
+AGE: ${document.getElementById("age").value}
+
+GOAL: ${document.getElementById("goal").value}
+HEIGHT: ${document.getElementById("height").value} cm
+WEIGHT: ${document.getElementById("weight").value} kg
+EXPERIENCE: ${document.getElementById("experience").value}
+
+CHALLENGE:
+${document.getElementById("challenge").value}
+
+IMPORTANT CONSIDERATIONS:
+${document.getElementById("medical").value}
+
+PAYMENT REFERENCE:
+${document.getElementById("reference").value}
+
+PAYMENT SCREENSHOT SELECTED: ${file ? file.name : "No"}
+
+Payment requires manual verification.`;
+
+  document.getElementById("summary").textContent = applicationText;
+  document.getElementById("success").style.display = "block";
+  document.getElementById("success").scrollIntoView({behavior:"smooth",block:"nearest"});
+});
+
+function copyApplication() {
+  navigator.clipboard.writeText(applicationText)
+    .then(() => alert("Application copied!"))
+    .catch(() => alert("Please select and copy the application text."));
+}
+</script>
+
+</body>
+</html>
